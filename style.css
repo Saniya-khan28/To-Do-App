@@ -24,7 +24,8 @@ body{
 }
 
 .todo-list{
-    width: 450px;
+    width: 100%;
+    max-width: 450px;
     padding: 20px;
     box-shadow: 0 10px 40px rgba(0, 0 , 0, 0.1);
     border-radius: 5px;
