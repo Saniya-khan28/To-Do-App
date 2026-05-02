@@ -1,3 +1,4 @@
+let tasksArray = JSON.parse(localStorage.getItem("tasks")) || [];
 let input = document.querySelector('.entered-list');
 let addBtn = document.querySelector('.add-list');
 let tasks = document.querySelector('.tasks');
@@ -48,14 +49,16 @@ tasks.addEventListener('click', (e) => {
 
   // DELETE
   else if (e.target.classList.contains('fa-xmark')) {
-    let itemText = e.target.parentElement.parentElement.querySelector("p").innerText;
+    let taskElement = e.target.parentElement.parentElement;
+    
+    let itemText = taskElement.querySelector("p").textContent.trim();
 
-    tasksArray = tasksArray.filter(task => task.text !== itemText);
+    tasksArray = tasksArray.filter(task => task.text.trim() !== itemText);
+
     localStorage.setItem("tasks", JSON.stringify(tasksArray));
 
-    e.target.parentElement.parentElement.remove();
-  }
-
+    taskElement.remove();
+}
   // EDIT
   else if (e.target.classList.contains('fa-pen-to-square')) {
     let taskElement = e.target.parentElement.parentElement.querySelector("p");
