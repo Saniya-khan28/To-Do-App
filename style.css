@@ -38,10 +38,12 @@ body{
 }
 .entered-list{
     padding: 10px;
+    flex: 1;
     border-radius: 5px ;
     border: 1px solid #ccc;
     font-size: 16px;
      box-sizing: border-box; 
+    min-width: 0;
 }
 .add-list{
     border: none;
@@ -58,10 +60,7 @@ body{
     opacity: 1;
     pointer-events: all;
 }
-.tasks{
-    width: 100%;
-    margin-top: 30px;
-}
+
 .item{
     padding: 10px;
     border-radius: 5px;
@@ -90,4 +89,8 @@ body{
     color: rgb(8 , 6 ,133);
     font-size: 18px ;
     cursor: pointer;
+}
+
+.item-btn i:hover {
+  color: red;
 }
