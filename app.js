@@ -93,6 +93,7 @@ function createTaskHTML(text, completed = false) {
 }
 
 window.onload = () => {
+    tasks.innerHTML = "";
   tasksArray.forEach(task => {
     let newItem = document.createElement('div');
     newItem.classList.add('item');
