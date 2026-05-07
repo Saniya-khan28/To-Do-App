@@ -16,6 +16,8 @@ input.addEventListener('keyup', () => {
 // add new item to list
 
 addBtn.addEventListener('click', () => {
+    tasksArray.push({ text: input.value, completed: false });
+    localStorage.setItem("tasks", JSON.stringify(tasksArray));
     if(input.value.trim() != 0){
        let newItem = document.createElement('div');
        newItem.classList.add('item');
@@ -27,7 +29,7 @@ addBtn.addEventListener('click', () => {
     } else {
         alert('Please enter a task')
     }
-})
+});
 
 tasks.addEventListener('click', (e) => {
 
@@ -48,16 +50,11 @@ tasks.addEventListener('click', (e) => {
   }
 
   // DELETE
-  else if (e.target.classList.contains('fa-xmark')) {
-    let taskElement = e.target.parentElement.parentElement;
-    
-    let itemText = taskElement.querySelector("p").textContent.trim();
-
+  else if (e.target.classList.contains('fa-xmark')) { 
+    let itemText = e.target.parentElement.parentElement.querySelector("p").innerText;
     tasksArray = tasksArray.filter(task => task.text.trim() !== itemText);
-
     localStorage.setItem("tasks", JSON.stringify(tasksArray));
-
-    taskElement.remove();
+    e.target.parentElement.parentElement.remove();
 }
   // EDIT
   else if (e.target.classList.contains('fa-pen-to-square')) {
@@ -93,7 +90,6 @@ function createTaskHTML(text, completed = false) {
 }
 
 window.onload = () => {
-    tasks.innerHTML = "";
   tasksArray.forEach(task => {
     let newItem = document.createElement('div');
     newItem.classList.add('item');
